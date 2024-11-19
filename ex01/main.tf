@@ -1,11 +1,11 @@
 provider "azurerm" {  # declaring the cloud provider
   features {}
-  subscription_id = "8cf0198a-c3b8-4f83-8250-1c171648d31b"  # Optional if you have 'az login' configured
+  subscription_id = "0f519cc7-9081-446a-9220-3cbc54c8d404"  # Optional if you have 'az login' configured
 }
  
 resource "azurerm_resource_group" "rg01" {  # creating a new resource group
   location = "East US"
-  name     = "rg01"
+  name     = "rg01-TF"
   tags = {
     env   = "dev"
     dep   = "finance"
@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "rg01" {  # creating a new resource group
 resource "azurerm_virtual_network" "vnet01" {  # defining the virtual network
   location            = azurerm_resource_group.rg01.location
   resource_group_name = azurerm_resource_group.rg01.name
-  name                = "Vnet01"
+  name                = "Vnet01-TF-ex01"
   # Multiple address spaces can be defined here
   address_space = [
     "10.10.0.0/16",
